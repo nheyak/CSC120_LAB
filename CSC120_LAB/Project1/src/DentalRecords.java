@@ -10,8 +10,10 @@ public class DentalRecords {
     private static final Scanner keyboard = new Scanner(System.in);
 
     //----Declaring constants
-    private static final int MAX_FAMILY_MEMBERS = 6; //Max number of people in a family is 6
-    private static final int MAX_TEETH = 8; //Max number of teeth per row is 8
+    /** Max number of people in a family is 6 */
+    private static final int MAX_FAMILY_MEMBERS = 6;
+    /** Max number of teeth per row is 8 */
+    private static final int MAX_TEETH = 8;
 
     /**
      * Main method that prompts user for data about their family and then, depending on which menu item they select, runs an operation with the data collected.
@@ -43,9 +45,6 @@ public class DentalRecords {
         do {
             // Displaying the output that the user wants
             outputType = displayOutput();
-
-            // Print new line in between menu options
-            System.out.println();
 
             // Use outputType to determine which output method should be performed
             switch (outputType) {
@@ -234,6 +233,10 @@ public class DentalRecords {
 
     //---------------------------------------------------------------------------------------------
     public static void printRecords(String[] familyNames, String[][][] familyTeeth) {
+
+        // Print new line in between menu options
+        System.out.println();
+
         for (int i = 0; i < familyNames.length; i++) {
             System.out.println(familyNames[i]); // Print family member's name with new line
 
@@ -255,6 +258,8 @@ public class DentalRecords {
             }
             System.out.println(); // New line after printing lowers
         }
+        // Print new line in between menu options
+        System.out.println();
     } // End of printRecords method
 
     /**
@@ -340,7 +345,10 @@ public class DentalRecords {
 
         familyTeeth[matchedIndex][layerIndex][toothNumber - 1] = "M";
 
-    }
+        // Print new line in between menu options
+        System.out.println();
+
+    } // End of extractTooth method
 
     /**
      * Calculates the Root Canal Indices for the entire family and displays them
@@ -404,7 +412,11 @@ public class DentalRecords {
         } else {
             System.out.println("No real roots, the discriminant is negative.");
         }
-    }
+
+        // Print new line in between menu options
+        System.out.println();
+
+    } // End of reportRootCanals method
 
     /**
      * Prints exit message
