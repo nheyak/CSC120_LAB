@@ -42,6 +42,8 @@ public class DentalRecords {
             teethData(i, familyTeeth, familyNames, familySize); // Pass familyTeeth as an argument
         }
 
+        System.out.println();
+
         do {
             // Displaying the output that the user wants
             outputType = displayOutput();
@@ -136,7 +138,7 @@ public class DentalRecords {
         familyTeeth[i] = new String[2][MAX_TEETH]; // 2 rows (uppers, lowers), max 8 teeth
 
         // Prompt for uppers
-        System.out.printf("Please enter the uppers for %s       : ", familyNames[i]);
+        System.out.printf("Please enter the uppers for %-16s: ", familyNames[i]);
 
         // Getting upper teeth data
         while (true) {
@@ -167,7 +169,7 @@ public class DentalRecords {
         }
 
         // Prompt for lowers
-        System.out.printf("Please enter the lowers for %s       : ", familyNames[i]);
+        System.out.printf("Please enter the lowers for %-16s: ", familyNames[i]);
 
         // Getting lower teeth data
         while (true) {
@@ -211,8 +213,7 @@ public class DentalRecords {
         boolean isValid;
 
         // Prompt for what data the user wants
-        System.out.println();
-        System.out.printf("%-40s : ", "(P)rint, (E)xtract, (R)oot, e(X)it");
+        System.out.printf("%-44s: ", "(P)rint, (E)xtract, (R)oot, e(X)it");
 
         // Read character and print back error message and re-prompt if entered character isn't a menu option
         do {
@@ -225,7 +226,7 @@ public class DentalRecords {
             isValid = true; // Assume valid until proven otherwise
             if (outputType != 'P' && outputType != 'E' && outputType != 'R' && outputType != 'X') {
                 isValid = false;
-                System.out.print("Invalid menu option, try again : ");
+                System.out.printf("%-44s: ", "Invalid menu option, try again");
             }
         } while (isValid == false);
 
@@ -424,6 +425,7 @@ public class DentalRecords {
 
     //---------------------------------------------------------------------------------------------
     public static void exit() {
+        System.out.println();
         System.out.print("Exiting the Floridian Tooth Records :-)");
     } //End of exit method
     //---------------------------------------------------------------------------------------------
