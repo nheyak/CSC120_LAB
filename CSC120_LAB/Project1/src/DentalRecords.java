@@ -46,19 +46,28 @@ public class DentalRecords {
             // Displaying the output that the user wants
             outputType = displayOutput();
 
+
             // Use outputType to determine which output method should be performed
             switch (outputType) {
                 case 'P':
                     printRecords(familyNames, familyTeeth);
+                    // Print new line in between menu options
+                    System.out.println();
                     break;
                 case 'E':
                     extractTooth(familyNames, familyTeeth, familySize);
+                    // Print new line in between menu options
+                    System.out.println();
                     break;
                 case 'R':
                     reportRootCanals(familyTeeth);
+                    // Print new line in between menu options
+                    System.out.println();
                     break;
                 case 'X':
                     exit();
+                    // Print new line in between menu options
+                    System.out.println();
                     break;
                 default:
                     break; // This is because I have the error message in the displayOutput method, so the returned value can only be one of the 4 above
@@ -258,8 +267,6 @@ public class DentalRecords {
             }
             System.out.println(); // New line after printing lowers
         }
-        // Print new line in between menu options
-        System.out.println();
     } // End of printRecords method
 
     /**
@@ -345,10 +352,7 @@ public class DentalRecords {
 
         familyTeeth[matchedIndex][layerIndex][toothNumber - 1] = "M";
 
-        // Print new line in between menu options
-        System.out.println();
-
-    } // End of extractTooth method
+    }
 
     /**
      * Calculates the Root Canal Indices for the entire family and displays them
@@ -412,11 +416,7 @@ public class DentalRecords {
         } else {
             System.out.println("No real roots, the discriminant is negative.");
         }
-
-        // Print new line in between menu options
-        System.out.println();
-
-    } // End of reportRootCanals method
+    }
 
     /**
      * Prints exit message
