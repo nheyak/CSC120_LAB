@@ -162,9 +162,9 @@ public class DentalRecords {
                 }
                 break; // Exit the loop if valid
             } else if (!isValid) {
-                System.out.printf("Invalid teeth types, try again              : ");
+                System.out.print("Invalid teeth types, try again              : ");
             } else {
-                System.out.printf("Too many teeth, try again                   : ");
+                System.out.print("Too many teeth, try again                   : ");
             }
         }
 
@@ -193,9 +193,9 @@ public class DentalRecords {
                 }
                 break; // Exit the loop if valid
             } else if (!isValid) {
-                System.out.printf("Invalid teeth types, try again              : ");
+                System.out.print("Invalid teeth types, try again              : ");
             } else {
-                System.out.printf("Too many teeth, try again                   : ");
+                System.out.print("Too many teeth, try again                   : ");
             }
         }
     } // End of teethData method
@@ -228,7 +228,7 @@ public class DentalRecords {
                 isValid = false;
                 System.out.printf("%-44s: ", "Invalid menu option, try again");
             }
-        } while (isValid == false);
+        } while (!isValid);
 
         // Return the character for the type of output the user wants
         return (outputType);
