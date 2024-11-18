@@ -1,5 +1,6 @@
 //=====================================================================================================
 public class Incandescent extends Light {
+    public static final double LUMENS_HEAT_CONVERSION = 87.4;
     //-------------------------------------------------------------------------------------------------
     public Incandescent(int lumens) {
         super(lumens);
@@ -8,7 +9,7 @@ public class Incandescent extends Light {
     @Override
     public double heatOutput() {
 //----Heat output is 87.4 times the lumens
-        return getLumens() * 87.4;
+        return (getLumens() * LUMENS_HEAT_CONVERSION);
     }
     //-------------------------------------------------------------------------------------------------
     @Override
