@@ -7,10 +7,10 @@ public class LightStrip {
     double totalHeatOutput;
     int flourescentCount;
     //---------------------------------------------------------------------------------------------
-    public LightStrip {
-        this.totalLumens = totalLumens;
-        this.totalHeatOutput = totalHeatOutput;
-        this.flourescentCount = flourescentCount;
+    public LightStrip() { //Constructor
+        this.totalLumens = 0;
+        this.totalHeatOutput = 0;
+        this.flourescentCount = 0;
     }
     //---------------------------------------------------------------------------------------------
     public void display() {
