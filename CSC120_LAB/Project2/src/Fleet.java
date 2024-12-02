@@ -1,9 +1,19 @@
 import java.util.ArrayList;
 import java.io.Serializable;
+
+/**
+ * Manages fleet of boats in the marina, adding, removing, and expensing them based on user input
+ * @author Nheya Kumar
+ */
 //=================================================================================================
 public class Fleet implements Serializable{
     //---------------------------------------------------------------------------------------------
     private ArrayList<Boat> boats;
+
+    /**
+     *Constructor Method
+     * @param boatData Input from the files read in the Marina class brought to be read and converted into Boats in the Fleet
+     */
     //---------------------------------------------------------------------------------------------
 //----Constructor
     public Fleet(ArrayList<String[]> boatData) {
@@ -24,34 +34,49 @@ public class Fleet implements Serializable{
             boats.add(new Boat(type, name, year, make, length, price, expenses));
         }
     } //End of constructor
+
+    /**
+     * Adds a boat object to fleet
+     * @param boat The boat being added
+     */
     //---------------------------------------------------------------------------------------------
 //----Add a new boat to the fleet
     public void addBoat(Boat boat) {
         boats.add(boat);
     }
-    //---------------------------------------------------------------------------------------------
-    public ArrayList<Boat> getBoats() {
-        return boats;
-    }
+
+    /**
+     * Removes a boat from the fleet only if the given boat exists to be removed
+     * @param boatName Name of the boat to be removed from the fleet
+     */
     //---------------------------------------------------------------------------------------------
     public boolean removeBoat(String boatName) {
         for (Boat boat : boats) {
-            if (boat.name.equalsIgnoreCase(boatName)) {
+            if (boat.getName().equalsIgnoreCase(boatName)) { // Use getter for name
                 boats.remove(boat);
                 return true;
             }
         }
         return false; // Boat not found
     }
+
+    /**
+     * Finds a boat object in the fleet if it exists for expensing
+     * @param boatName Name of boat to be found
+     */
     //---------------------------------------------------------------------------------------------
     public Boat findBoat(String boatName) {
         for (Boat boat : boats) {
-            if (boat.name.equalsIgnoreCase(boatName)) {
+            if (boat.getName().equalsIgnoreCase(boatName)) { // Use getter for name
                 return boat;
             }
         }
         return null; // Boat not found
     }
+
+    /**
+     * Prints the fleet data including type, name, year, length, cost, and expenses
+     */
     //---------------------------------------------------------------------------------------------
     public void printFleet() {
         double totalPaid = 0, totalSpent = 0;
@@ -59,8 +84,8 @@ public class Fleet implements Serializable{
         System.out.println();
         System.out.println("Fleet report:");
         for (Boat boat : boats) {
-            totalPaid += boat.price;
-            totalSpent += boat.expenses;
+            totalPaid += boat.getPrice(); // Use getter for price
+            totalSpent += boat.getExpenses(); // Use getter for expenses
             System.out.println(boat); // Calls the Boat's toString method
         }
         System.out.printf("%-54s: Paid $%10.2f : Spent $%9.2f%n", "Total", totalPaid, totalSpent);
