@@ -1,35 +1,34 @@
 import java.util.Scanner;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 //=================================================================================================
 public class Marina {
     //---------------------------------------------------------------------------------------------
+    public static final String SAVE_FILE_NAME = "FleetData.db";
     public static final Scanner keyboard = new Scanner(System.in);
     //---------------------------------------------------------------------------------------------
     public static void main(String[] args){
 
-//----See if the user gave the file name as a command line argument
-        if (args.length < 1) {
-            System.err.println("Usage: java Marina <CSV file name>");
-            return;
+//----Declare fleet
+        Fleet fleet;
+
+//----Load a fleet if there is one
+        fleet = loadFleet();
+
+        if (fleet == null) {
+//--------If no save file exists, proceed with loading CSV file
+            if (args.length < 1) {
+                System.err.println("Usage: java Marina <CSV file name>");
+                return;
+            }
+            String fileName = args[0];
+            ArrayList<String[]> boatData = getInput(fileName);
+            if (boatData.isEmpty()) {
+                System.err.println("The file is empty or could not be read.");
+                return;
+            }
+            fleet = new Fleet(boatData);
         }
-
-//----Get the file name from the command line argument
-        String fileName = args[0];
-
-//----Read the CSV file and get the boat data
-        ArrayList<String[]> boatData = getInput(fileName);
-
-//----Error for if the file uploaded is empty
-        if (boatData.isEmpty()) {
-            System.err.println("The file is empty or could not be read.");
-            return;
-        }
-
-//----Initializing the Fleet with the boat data
-        Fleet fleet = new Fleet(boatData);
 
 //----Print Welcome Message
         System.out.println("Welcome to the Fleet Management System");
@@ -125,6 +124,7 @@ public class Marina {
                     break;
 
                 case "X":
+                    saveFleet(fleet);
                     System.out.println();
                     System.out.println("Exiting the Fleet Management System.");
                     return;
@@ -151,6 +151,27 @@ public class Marina {
         }
 
         return boatData;
+    }
+    //---------------------------------------------------------------------------------------------
+    private static void saveFleet(Fleet fleet) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_FILE_NAME))) {
+            oos.writeObject(fleet);
+        } catch (IOException e) {
+            System.err.println("Error saving fleet data: " + e.getMessage());
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    // Method to load the Fleet object from a file
+    private static Fleet loadFleet() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SAVE_FILE_NAME))) {
+            return (Fleet) ois.readObject();
+        } catch (FileNotFoundException e) {
+            // No save file found; return null
+            return null;
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error loading fleet data: " + e.getMessage());
+            return null;
+        }
     }
 //-------------------------------------------------------------------------------------------------
 } //End of Marina class
