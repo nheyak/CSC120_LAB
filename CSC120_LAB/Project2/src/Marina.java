@@ -180,7 +180,7 @@ public class Marina {
     }
 
     /**
-     * Saves Fleet with all changes as file type given above.
+     * Saves Fleet with all changes as file with type and name given above.
      * @param fleet Fleet object that holds Boat objects to be saved in the file for later reference
      */
     //---------------------------------------------------------------------------------------------
