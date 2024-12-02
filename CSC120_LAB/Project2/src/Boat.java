@@ -10,7 +10,7 @@ public class Boat implements Serializable{
 //----Defining enum class for type of boat
 
     /**
-     * Stores the types of boats in the fleet (sailing or power only).
+     * Stores the types of boats in the fleet (sailing or power).
      */
     protected enum Type { //Protected so it's not global
         SAILING, POWER
