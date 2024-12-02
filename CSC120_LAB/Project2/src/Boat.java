@@ -20,27 +20,27 @@ public class Boat implements Serializable{
     /**
      * What type of boat it is (sailing or power)
      */
-    private Type type;
+    private final Type type;
     /**
      * The name of the boat
      */
-    private String name;
+    private final String name;
     /**
      * The year the boat was made
      */
-    private int year;
+    private final int year;
     /**
      * The make of the boat
      */
-    private String make;
+    private final String make;
     /**
      * The length of the boat
      */
-    private int length;
+    private final int length;
     /**
      * The price of the boat
      */
-    private double price;
+    private final double price;
     /**
      * The money expensed/spent on the boat
      */
