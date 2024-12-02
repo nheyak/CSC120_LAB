@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.io.*;
+import java.io.*; // Imports all because I needed like 4 of them
 import java.util.ArrayList;
 
 /**
@@ -124,7 +124,7 @@ public class Marina {
                                 System.out.printf("Expense not permitted, only $%.2f left to spend.%n", (expensedBoat.getPrice() - expensedBoat.getExpenses()));
                                 System.out.println();
                             } else {
-                                expensedBoat.addExpenses(expensedBoat.getExpenses() + amount); // Use setter
+                                expensedBoat.addExpenses(amount); // Use setter
                                 System.out.printf("Expense authorized, $%.2f spent.%n", expensedBoat.getExpenses());
                                 System.out.println();
                             }
@@ -155,7 +155,7 @@ public class Marina {
     } //End of main method
 
     /**
-     * Reads and returns data from CSV file
+     * Reads and returns data from CSV file.
      * @param fileName Name of file to be read given in the command line
      * @return Returns the data of boats in the fleet in an ArrayList to be read in the main method
      */
@@ -170,32 +170,35 @@ public class Marina {
                 String[] data = line.split(",");
                 boatData.add(data);
             }
+            br.close();
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
         }
+
 
         return boatData;
     }
 
     /**
-     * Saves Fleet with all changes as file type given above
+     * Saves Fleet with all changes as file type given above.
      * @param fleet Fleet object that holds Boat objects to be saved in the file for later reference
      */
     //---------------------------------------------------------------------------------------------
     private static void saveFleet(Fleet fleet) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_FILE_NAME))) {
             oos.writeObject(fleet);
+            oos.close();
         } catch (IOException e) {
             System.err.println("Error saving fleet data: " + e.getMessage());
         }
     }
 
     /**
-     * Loads data to be read into fleet from file above if it exists
+     * Loads data to be read into fleet from file above if it exists.
      * @return Returns Fleet object that uses the data that is read with the constructor to put all boats in the fleet
      */
     //---------------------------------------------------------------------------------------------
-    // Method to load the Fleet object from a file
+//----Method to load the Fleet object from a file
     private static Fleet loadFleet() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SAVE_FILE_NAME))) {
             return (Fleet) ois.readObject();

@@ -8,21 +8,46 @@ import java.io.Serializable;
 public class Boat implements Serializable{
     //---------------------------------------------------------------------------------------------
 //----Defining enum class for type of boat
+
+    /**
+     * Stores the types of boats in the fleet (sailing or power only).
+     */
     protected enum Type { //Protected so it's not global
         SAILING, POWER
     }
 
 //----Declaring variables (Non-global because they're private)
+    /**
+     * What type of boat it is (sailing or power)
+     */
     private Type type;
+    /**
+     * The name of the boat
+     */
     private String name;
+    /**
+     * The year the boat was made
+     */
     private int year;
+    /**
+     * The make of the boat
+     */
     private String make;
+    /**
+     * The length of the boat
+     */
     private int length;
+    /**
+     * The price of the boat
+     */
     private double price;
+    /**
+     * The money expensed/spent on the boat
+     */
     private double expenses;
 
     /**
-     * Takes parameters and constructs a boat object in the fleet
+     * Takes parameters and constructs a boat object in the fleet.
      * @param type Whether it is a sailing boat or power boat
      * @param name The name of the boat
      * @param year What year the boat was made
@@ -44,7 +69,7 @@ public class Boat implements Serializable{
     }
 
     /**
-     * Gets the name of the boat for use in the Fleet Class
+     * Gets the name of the boat for use in the Fleet Class.
      * @return Returns name of the boat as a String
      */
     //---------------------------------------------------------------------------------------------
@@ -53,7 +78,7 @@ public class Boat implements Serializable{
     }
 
     /**
-     * Gets the price of the boat for use in the Fleet Class
+     * Gets the price of the boat for use in the Fleet Class.
      * @return Returns price of the boat as a double
      */
     //---------------------------------------------------------------------------------------------
@@ -62,7 +87,7 @@ public class Boat implements Serializable{
     }
 
     /**
-     * Gets the expenses of the boat for use in the Fleet Class
+     * Gets the expenses of the boat for use in the Fleet Class.
      * @return Returns the expenses of the boat as a double
      */
     //---------------------------------------------------------------------------------------------
@@ -71,7 +96,7 @@ public class Boat implements Serializable{
     }
 
     /**
-     * Adds expenses to the expense amount for the Boat
+     * Adds expenses to the expense amount for the Boat.
      * @param amount The amount of money trying to be expensed on the boat
      */
     //---------------------------------------------------------------------------------------------
@@ -80,7 +105,7 @@ public class Boat implements Serializable{
     }
 
     /**
-     * Prints each boat's data
+     * Prints each boat's data.
      * @return String containing all the boat's information formatted uniformly
      */
     //---------------------------------------------------------------------------------------------

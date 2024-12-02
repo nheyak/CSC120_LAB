@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.io.Serializable;
 
 /**
- * Manages fleet of boats in the marina, adding, removing, and expensing them based on user input
+ * Manages fleet of boats in the marina, adding, removing, and expensing them based on user input.
  * @author Nheya Kumar
  */
 //=================================================================================================
@@ -11,8 +11,8 @@ public class Fleet implements Serializable{
     private ArrayList<Boat> boats;
 
     /**
-     *Constructor Method
-     * @param boatData Input from the files read in the Marina class brought to be read and converted into Boats in the Fleet
+     * Constructor Method that creates a Fleet to store Boat objects.
+     * @param boatData Input from the files read in the Marina class brought to be read and converted into Boats in the Fleet.
      */
     //---------------------------------------------------------------------------------------------
 //----Constructor
@@ -36,7 +36,7 @@ public class Fleet implements Serializable{
     } //End of constructor
 
     /**
-     * Adds a boat object to fleet
+     * Adds a boat object to fleet.
      * @param boat The boat being added
      */
     //---------------------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ public class Fleet implements Serializable{
     }
 
     /**
-     * Removes a boat from the fleet only if the given boat exists to be removed
+     * Removes a boat from the fleet only if the given boat exists to be removed.
      * @param boatName Name of the boat to be removed from the fleet
      */
     //---------------------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ public class Fleet implements Serializable{
     }
 
     /**
-     * Finds a boat object in the fleet if it exists for expensing
+     * Finds a boat object in the fleet if it exists for expensing.
      * @param boatName Name of boat to be found
      */
     //---------------------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ public class Fleet implements Serializable{
     }
 
     /**
-     * Prints the fleet data including type, name, year, length, cost, and expenses
+     * Prints the fleet data including type, name, year, length, cost, and expenses.
      */
     //---------------------------------------------------------------------------------------------
     public void printFleet() {
